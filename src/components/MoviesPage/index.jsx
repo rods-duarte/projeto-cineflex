@@ -7,8 +7,7 @@ import "./style.css";
 
 
 
-export default function MoviesList() {
-    
+export default function MoviesPage() {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
@@ -17,7 +16,7 @@ export default function MoviesList() {
     }, []);
     
     return (
-        <main className="MoviesList">
+        <main className="MoviesPage">
             <h1>Selecione o filme</h1>
             <ul>
                 {movies.map(movie => <Movie data={movie}/>)}

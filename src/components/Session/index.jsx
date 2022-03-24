@@ -1,10 +1,15 @@
+import {Link} from "react-router-dom";
 
+import "./style.css";
 
-//TODO criar componente
-export default function Session({data}) {
+export default function Session({session}) {
+    const {weekday, date, showtimes} = session;
     return (
         <div className="Session">
-            <h2>{`${data.weekday} - ${data.date}`}</h2>
+            <h2>{`${weekday} - ${date}`}</h2>
+            <div className="buttons">
+                {showtimes.map(time => <Link to={`/sessao/${time.id}`}><button>{time.name}</button></Link>)}
+            </div> 
         </div>
     )
 }
