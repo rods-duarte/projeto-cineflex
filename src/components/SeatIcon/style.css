@@ -1,0 +1,11 @@
+.SeatIcon {
+    width: 26px;
+    height: 26px;
+    margin: 10px 5px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
