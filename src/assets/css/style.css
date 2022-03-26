@@ -21,8 +21,8 @@ footer {
   margin-top: 20px;
   position: sticky;
 
-  background-color: #DFE6ED;
-  border: 1px solid #9EADBA;
+  background-color: #dfe6ed;
+  border: 1px solid #9eadba;
 
   display: flex;
   align-items: center;
@@ -56,7 +56,6 @@ footer .sessionInfo {
   display: flex;
   flex-direction: column;
 }
-
 
 button {
   cursor: pointer;

@@ -14,7 +14,6 @@ export default function SeatIcon({ data, postObj, setPostObj }) {
 
   // seleciona/desseleciona poltronas
   function pickSeat() {
-
     if (!isAvailable) {
       alert(`Poltrona invalida !`);
       return;
@@ -22,12 +21,14 @@ export default function SeatIcon({ data, postObj, setPostObj }) {
 
     if (!isSelected) {
       setIsSelected(true);
-      setPostObj({...postObj, ids: [...postObj.ids, id]});
+      setPostObj({ ...postObj, ids: [...postObj.ids, id] });
     } else {
       setIsSelected(false);
-      setPostObj({...postObj, ids: postObj.ids.filter((selectedId) => selectedId !== id)});
+      setPostObj({
+        ...postObj,
+        ids: postObj.ids.filter((selectedId) => selectedId !== id),
+      });
     }
-
   }
 
   return (

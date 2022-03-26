@@ -58,6 +58,10 @@
   font-size: 18px;
 }
 
+.SeatsPage .buttonBlocked {
+  background-color: #d5d5d5;
+}
+
 .SeatsPage .selected,
 .SeatsPage .available,
 .SeatsPage .unavailable {
@@ -71,17 +75,17 @@
 }
 
 .available {
-    background-color: #C3CFD9;
-    border: 1px solid #808F9D;
+  background-color: #c3cfd9;
+  border: 1px solid #808f9d;
 }
 
 .unavailable {
-    background-color: #FBE192;
-    border: 1px solid #F7C52B;
-    cursor: default;
+  background-color: #fbe192;
+  border: 1px solid #f7c52b;
+  cursor: default;
 }
 
 .selected {
-    background-color: #8DD7CF;
-    border: 1px solid #1AAE9E;
-}   
+  background-color: #8dd7cf;
+  border: 1px solid #1aae9e;
+}

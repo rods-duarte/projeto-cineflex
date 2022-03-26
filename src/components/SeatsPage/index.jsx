@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -7,17 +7,19 @@ import SeatIcon from "./../SeatIcon/";
 import "./style.css";
 
 export default function SeatsPage({ setSuccessData }) {
-  const [data, setData] = useState({ //dados para construcao do layout
+  const [data, setData] = useState({
+    //dados para construcao do layout
     seats: [],
     movie: { title: "", posterURL: "" },
     day: { weekday: "" },
     name: "",
   });
-  const [postObj, setPostObj] = useState({ //dados a serem enviados a api
+  const [postObj, setPostObj] = useState({
+    //dados a serem enviados a api
     ids: [],
-    name: '',
-    cpf: ''
-  })
+    name: "",
+    cpf: "",
+  });
   const { id } = useParams();
   console.log(postObj);
 
@@ -35,8 +37,8 @@ export default function SeatsPage({ setSuccessData }) {
     const validateName = postObj.name.length > 0;
     const validateCpf = postObj.cpf.length === 11;
     const validateSeats = postObj.ids.length > 0;
-    
-    return validateName && validateCpf && validateSeats 
+
+    return validateName && validateCpf && validateSeats;
   }
 
   return (
@@ -70,23 +72,54 @@ export default function SeatsPage({ setSuccessData }) {
         <input
           type="text"
           placeholder="Digite seu nome..."
-          onChange={(event) => setPostObj({ ...postObj, name: event.target.value })}
+          onChange={(event) =>
+            setPostObj({ ...postObj, name: event.target.value })
+          }
         />
         <h2>CPF do Comprador: </h2>
         <input
           type="number"
           placeholder="Digite seu CPF..."
-          onChange={(event) => setPostObj({ ...postObj, cpf: event.target.value })}
+          onChange={(event) =>
+            setPostObj({ ...postObj, cpf: event.target.value })
+          }
         />
       </div>
-      <button onClick={() => {
-        if(inputValidation()) {
-          setSuccessData({time: data.name, seats: [...postObj.ids], user: postObj.name, cpf: postObj.cpf, movie: {...data.movie}, day: {...data.day}});
-          axios.post(`https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many`, postObj);
-          
-        } else {
-          alert(`Dados Invalidos`);
-        }}}>Reservar Assento(s)</button>
+      {inputValidation() ? (
+        <Link
+          to={"/sucesso"}
+          onClick={() => {
+            setSuccessData({
+              time: data.name,
+              seats: postObj.ids.map((id) => {
+                // gambiarra, me confundi com a descricao do retorno da api e assumi que os valores id e name eram iguais, apliquei essa solucao temporariamente e se tiver tempo depois vou refazer
+                while (id > 50) {
+                  id -= 50;
+                }
+                return id;
+              }),
+              name: postObj.name,
+              cpf: postObj.cpf,
+              movie: { ...data.movie },
+              day: { ...data.day },
+            });
+            axios.post(
+              `https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many`,
+              postObj
+            );
+          }}
+        >
+          <button>Reservar Assento(s)</button>
+        </Link>
+      ) : (
+        <button
+          className="buttonBlocked"
+          onClick={() => alert(`Dados Invalidos`)}
+        >
+          Reservar Assento(s)
+        </button>
+      )}
+
       <footer>
         <div className="poster">
           <img src={data.movie.posterURL} alt={data.movie.title} />

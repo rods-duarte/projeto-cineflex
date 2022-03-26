@@ -1,0 +1,44 @@
+.SuccessPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 70px;
+}
+
+.SuccessPage div {
+    width: 288.72px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: #293845;
+}
+
+.SuccessPage h1 {
+    color: #247A6B;
+    font-weight: 700;
+}
+
+.SuccessPage h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.SuccessPage span {
+    font-size: 22px;
+    margin: 3px 0;
+}
+
+.SuccessPage button {
+    width: 225px;
+    height: 42px;
+    margin: 30px 0;
+    border: none;
+    border-radius: 3px;
+    background-color: #e8833a;
+    color: #fff;
+    font-size: 18px;
+  }
+  
