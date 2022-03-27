@@ -40,11 +40,12 @@
   border-radius: 3px;
 
   font-size: 18px;
-  color: #afafaf;
+  color: #000;
 }
 
 .SeatsPage input::placeholder {
   font-style: italic;
+  color: #afafaf;
 }
 
 .SeatsPage button {
